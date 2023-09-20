@@ -1,0 +1,21 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+int main() {
+	int x[10], y[10];
+	for (int i = 0; i < 10; i++) {
+		scanf("%d", &x[i]);
+	}
+	for (int i = 0; i < 10; i++) {
+		int cnt = 0;
+		for (int j = 0; j < 10; j++) {
+			if (x[i] < x[j]) {
+				cnt++;
+			}
+		}y[i] = cnt;
+	}
+	for (int i = 0; i < 10; i++) {
+		printf(" %d", y[i]);
+	}
+	return 0;
+}
