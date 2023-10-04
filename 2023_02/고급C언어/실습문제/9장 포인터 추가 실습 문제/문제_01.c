@@ -1,14 +1,13 @@
-#define _CRT_SECURE_NO_WARNIGNS
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 
 void input(int* p, int M);
 int* sel_max(int* p, int M);
-void outpout(int* p, int N);
+void output(int* p, int N);
 
-int main() {
+int main(void) {
 	int in[100], out[100], * max, i, N, M;
-
-	scanf("%d%d", &N, &M);
+	scanf("%d %d", &N, &M);
 	for (i = 0; i < N; i++) {
 		input(in, M);
 		max = sel_max(in, M);
@@ -19,37 +18,29 @@ int main() {
 }
 
 void input(int* p, int M) {
-	int* point;
-	for (point = p; point < p + M; point++) {
-		scanf("%d", point);
+	for (int* px = p; px < p + M; px++) {
+		scanf("%d", px);
 	}
 }
-
 int* sel_max(int* p, int M) {
-	int max_cnt = 0;
-	int* max_ptr = NULL;
-
-	for (int i = 0; i < M; i++) {
-		int k = 0;
-
-		for (int j = 0; j < M; j++) {
-			if (p[i] == p[j]) {
-				k++;
+	int max = 0;
+	int* ans = NULL;
+	for (int* px = p; px < p + M; px++) {
+		int cnt = 0;
+		for (int* py = p; py < p + M; py++) {
+			if (*px == *py) {
+				cnt++;
 			}
 		}
-
-		if (k > max_cnt) {
-			max_cnt = k;
-			max_ptr = &p[i];
+		if (cnt > max) {
+			max = cnt;
+			ans = px;
 		}
 	}
-
-	return max_ptr;
+	return ans;
 }
-
 void output(int* p, int N) {
-	int* point;
-	for (point = p; point < p + N; point++) {
-		printf(" %d", *point);
+	for (int* px = p; px < p + N; px++) {
+		printf(" %d", *px);
 	}
 }
