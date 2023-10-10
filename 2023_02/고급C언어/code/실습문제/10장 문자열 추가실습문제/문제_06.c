@@ -6,24 +6,24 @@ void StringAdd(char arr[], char ch, int index);
 int Convertor(char x);
 
 int main() {
-    char str[17]; // 최대 길이의 문자열(8자리) + 추가될 최대 문자(8자리) + '\0'
+    char str[17];
     gets(str);
 
-    int len = strlen(str); // 처음에 입력받은 문자열의 길이를 구합니다.
+    int len = strlen(str);
 
     for (int i = 0; i < len - 1; i++) {
         int currentNum = Convertor(str[i]);
         int nextNum = Convertor(str[i + 1]);
 
-        if (currentNum % 2 && nextNum % 2) {  // 홀수가 연속되는 경우
+        if (currentNum % 2 && nextNum % 2) {
             StringAdd(str, '+', i + 1);
-            len++;  // 문자열 길이가 1 증가
-            i++;   // +를 추가했기 때문에 그 다음 문자를 검사
+            len++;
+            i++;
         }
-        else if (!(currentNum % 2) && !(nextNum % 2)) {  // 짝수가 연속되는 경우
+        else if (!(currentNum % 2) && !(nextNum % 2)) {
             StringAdd(str, '*', i + 1);
-            len++;  // 문자열 길이가 1 증가
-            i++;   // *를 추가했기 때문에 그 다음 문자를 검사
+            len++;
+            i++;
         }
     }
 

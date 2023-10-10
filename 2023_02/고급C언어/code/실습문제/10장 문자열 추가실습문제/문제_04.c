@@ -9,9 +9,9 @@ int main() {
     int minIndex, maxIndex;
 
     scanf("%d", &N);
-    getchar(); // getchar() 사용하여 버퍼 제거
+    getchar();
 
-    // 문자열 입력받기
+
     for (int i = 0; i < N; i++) {
         gets(sentences[i]);
         int len = strlen(sentences[i]);
@@ -28,7 +28,6 @@ int main() {
     char minWord[101] = "", maxWord[101] = "", tempWord[101];
     int start = 0, len;
 
-    // 가장 짧은 문자열에서 사전적 순서가 가장 빠른 단어 찾기
     for (int i = 0; i <= minLength; i++) {
         if (sentences[minIndex][i] == ' ' || sentences[minIndex][i] == '\0') {
             len = i - start;
@@ -42,7 +41,6 @@ int main() {
     }
 
     start = 0;
-    // 가장 긴 문자열에서 사전적 순서가 가장 늦은 단어 찾기
     for (int i = 0; i <= maxLength; i++) {
         if (sentences[maxIndex][i] == ' ' || sentences[maxIndex][i] == '\0') {
             len = i - start;

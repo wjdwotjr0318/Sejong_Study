@@ -26,26 +26,49 @@ int main() {
         }
     }
 
-    int count;
+    int count = 0;
     char* ptr = sentences[maxIdx];
-    count = 0;
-    while (sscanf(ptr, "%s", word) != EOF) {
+    while (1) {
+        int j = 0;
+        while (ptr[j] != ' ' && ptr[j] != '\0') {
+            word[j] = ptr[j];
+            j++;
+        }
+        word[j] = '\0';
+
         if (count == M1) {
             strcpy(longestWord, word);
             break;
         }
-        ptr += strlen(word) + 1;
+
+        if (ptr[j] == '\0') {
+            break;
+        }
+
+        ptr += j + 1;
         count++;
     }
 
-    ptr = sentences[minIdx];
     count = 0;
-    while (sscanf(ptr, "%s", word) != EOF) {
+    ptr = sentences[minIdx];
+    while (1) {
+        int j = 0;
+        while (ptr[j] != ' ' && ptr[j] != '\0') {
+            word[j] = ptr[j];
+            j++;
+        }
+        word[j] = '\0';
+
         if (count == M2) {
             strcpy(shortestWord, word);
             break;
         }
-        ptr += strlen(word) + 1;
+
+        if (ptr[j] == '\0') {
+            break;
+        }
+
+        ptr += j + 1;
         count++;
     }
 
@@ -58,4 +81,3 @@ int main() {
 
     return 0;
 }
-
