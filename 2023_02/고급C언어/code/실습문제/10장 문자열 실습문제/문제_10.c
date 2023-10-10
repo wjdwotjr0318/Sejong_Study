@@ -10,6 +10,14 @@ int main() {
 	for (int i = 0; i < n; i++) {
 		scanf("%s", str[i]);
 	}
-
+	int max = strlen(str);
+	int index = 0;
+	for (int i = 0; i < n; i++) {
+		if (max > strlen(str[i])) {
+			max = strlen(str[i]);
+			index = i;
+		}
+	}
+	printf("%s", str[index]);
 	return 0;
 }
