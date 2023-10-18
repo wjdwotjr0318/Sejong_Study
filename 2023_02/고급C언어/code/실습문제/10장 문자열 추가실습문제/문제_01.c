@@ -3,37 +3,34 @@
 #include <string.h>
 
 int main() {
-    char input[101];
-    char word[101];
-    char min_word[101];
-    int i, j, word_end;
+    char ch[101], word[101], min[101];
+    int idx = 0;
 
-    gets(input);
+    // 사용자로부터 문자열 입력
+    gets(ch);
 
-    int len = strlen(input);
-    i = 0;
+    // min 배열을 가장 큰 문자로 초기화
+    min[0] = 127;  // ASCII 테이블에서 가장 큰 문자
+    min[1] = '\0';
 
-    min_word[0] = 'z';
-    min_word[1] = '\0';
-
-    while (i < len) {
-        j = 0;
-
-        while (i < len && input[i] != ' ') {
-            word[j++] = input[i++];
+    for (int i = 0; 1; i++) {
+        if (ch[i] != ' ' && ch[i] != '\n' && ch[i] != '\0') {
+            word[idx++] = ch[i];
         }
-        word[j] = '\0';
+        else {
+            word[idx] = '\0';  // 단어 끝에 null 문자 추가
+            if (strcmp(word, min) < 0) {
+                strcpy(min, word);
+            }
+            idx = 0;
 
-        if (strcmp(word, min_word) < 0) {
-            strcpy(min_word, word);
-        }
-
-        while (i < len && input[i] == ' ') {
-            i++;
+            // 문자열의 끝을 만나면 반복 종료
+            if (ch[i] == '\0') {
+                break;
+            }
         }
     }
 
-    printf("%s", min_word);
-
+    printf("%s", min);  // 최소값인 단어 출력
     return 0;
 }
