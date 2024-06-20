@@ -40,7 +40,7 @@ Node* getNode() {
 
 void main() {
 
-    int n;//³ëµå °³¼ö
+    int n;//Â³Ã«ÂµÃ¥ Â°Â³Â¼Ã¶
     scanf("%d", &n);
 
     Node* root = getNode();
